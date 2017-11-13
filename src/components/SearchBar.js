@@ -8,7 +8,13 @@ class SearchBar extends Component {
   constructor(props){
     super(props)
 
-    this.state = { term: 'lol' }
+    this.state = { term: '' }
+  }
+
+  handleTextChange(term){
+    this.setState({term})
+    this.props.onSearchTermChange(term);
+
   }
 
   render(){
@@ -17,7 +23,7 @@ class SearchBar extends Component {
         value={this.state.term}
         hintText="Hint Text"
         floatingLabelText="Floating Label Text"
-        onChange={ event => this.setState({term: event.target.value}) }
+        onChange={ event =>  this.handleTextChange(event.target.value) }
       />
     )
   }
